@@ -1,0 +1,114 @@
+import React, { Component } from 'react';
+import Question from './Question';
+import { birdsData, questions } from './Dates/data';
+
+import logo from './img/logo.svg';
+import AnswersList from './AnswersList';
+import Score from './Score';
+
+const headerList = [
+    {
+        name: 'Разминка'
+    },
+    {
+        name: 'Воробьиные'
+    },
+    {
+        name: 'Лесные птицы'
+    },
+    {
+        name: 'Певчие птицы'
+    },
+    {
+        name: 'Хищные птицы'
+    },
+    {
+        name: 'Морские птицы'
+    }
+];
+
+export default class Main extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            activeQuestionIndex: 0,
+            isGuessed: false,
+            score: 0,
+            chosen: []
+        };
+    }
+
+    guess = (id) => {
+        this.setState(({ activeQuestionIndex, isGuessed, chosen, score }) => {
+            const correctAnswerId = questions[activeQuestionIndex];
+            const isCorrect = id === correctAnswerId;
+            const isFirstGuess = !chosen.length;
+            let newScore = score;
+
+            if (isCorrect && isFirstGuess) {
+                newScore += 5;
+            }
+
+            if (isCorrect && !isFirstGuess) {
+                newScore += 1;
+            }
+
+            chosen.push(id);
+            return {
+                isGuessed: isGuessed || isCorrect,
+                chosen,
+                score: newScore
+            };
+        });
+    };
+
+    changeQuestion = () => {
+        const maxCount = birdsData.length - 1;
+
+        const { activeQuestionIndex } = this.state;
+        if (activeQuestionIndex >= maxCount) {
+            return;
+        }
+
+        this.setState((state) => ({
+            activeQuestionIndex: state.activeQuestionIndex + 1,
+            isGuessed: false,
+            chosen: []
+        }));
+    };
+
+    render() {
+        const { activeQuestionIndex, isGuessed, chosen, score } = this.state;
+
+        return (
+            <div>
+                <div className="block_one">
+                    <header>
+                        <img className="logo" src={logo} />
+                        <Score count={score} />
+                    </header>
+                    <ul className="ul_item">
+                        {headerList.map((newList, index) => (
+                            <li
+                                key={newList.name}
+                                className={`list_item ${index === activeQuestionIndex ? 'active' : ''}`}
+                                style={newList.style}> {newList.name} </li>
+                        ))}
+                    </ul>
+                </div>
+                <Question
+                    isGuessed={isGuessed}
+                    activeQuestionIndex={activeQuestionIndex}
+                />
+                <AnswersList
+                    isGuessed={isGuessed}
+                    chosen={chosen}
+                    activeQuestionIndex={activeQuestionIndex}
+                    guess={this.guess}
+                />
+                <button onClick={this.changeQuestion} disabled={!isGuessed}>Next Level</button>
+            </div>
+        );
+    }
+}
