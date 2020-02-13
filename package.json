@@ -1,5 +1,5 @@
 {
-  "name": "my",
+  "name": "Songbird",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -35,6 +35,6 @@
     ]
   },
   "devDependencies": {
-    "react-hot-loader": "^4.5.3"
+    "react-hot-loader": "^4.12.19"
   }
 }
