@@ -29,7 +29,7 @@ header {
 
 .logo {
    height: 30px;
-   margin:2%;
+   margin: 2%;
    margin-right: 70%;
    margin-left: 6%;
    padding: 0;
@@ -38,7 +38,7 @@ header {
 }
 
 .score {
-   margin:2%;
+   margin: 2%;
    font-family: 'Fira Sans';
    font-size: 20px;
 }
@@ -59,7 +59,7 @@ header {
 }
 
 .block_item_two {
-   margin:1%;
+   margin: 1%;
    padding: 2%;
 }
 
@@ -67,8 +67,6 @@ img {
    border-radius: 10%;
    padding: 10%;
 }
-
-
 
 .ul_item {
    color: #fff;
@@ -97,7 +95,7 @@ img {
    text-align: center;
 }
 
-.list_item.active{
+.list_item.active {
    background-color: #fff283;
    color: black;
 }
@@ -119,8 +117,6 @@ h2 {
    background-color: rgba(38, 50, 56, 0.6);
    cursor: pointer;
 }
-
-li {}
 
 li span {
    color: #ffe9bb;
@@ -145,18 +141,17 @@ li span {
 }
 
 p {
-   font-size: 22px;
+   font-size: 18px;
    padding: 3%;
    padding-top: 0;
+   padding-bottom: 0;
 }
 
 img {
    width: 180px;
    height: 90px;
-
+   padding: 6%;
 }
-
-.descp_birds {}
 
 button {
    width: 60%;
@@ -187,23 +182,45 @@ button[disabled] {
    cursor: default;
 }
 
+.congrats {
+   width: 50%;
+   margin: auto;
+   margin-top: 10%;
+   color: #fff;
+   background-color: rgba(38, 50, 56, 0.3);
+}
+
+.congrats-p {
+   font-size: 34px;
+   font-family: 'Helvetica Neue';
+   text-align: center;
+}
+
+.prize {
+   width: 280px;
+   height: 240px;
+   margin: 27%;
+   margin-top: 3%;
+   margin-bottom: 1%;
+}
+
 @media (max-width: 1200px) {
    h2 {
-      width:160px;
+      width: 160px;
    }
 
-   .audio{
-      width:170px;
+   .audio {
+      width: 170px;
    }
 }
 
 @media (max-width: 1000px) {
    body {
-      width:100%;
+      width: 100%;
    }
 
-   img{
-      width:130px;
+   img {
+      width: 130px;
    }
 
    h2 {
@@ -211,17 +228,24 @@ button[disabled] {
    }
 
    .audio {
-      width:150px;
+      width: 150px;
+   }
+
+   .prize {
+      width: 180px;
+      height: 130px;
    }
 }
 
 @media (max-width: 800px) {
    body {
-      width:100%;
+      width: 100%;
    }
+
    .block_item {
-      margin-right:100px;
+      margin-right: 100px;
    }
+
    .ul_item {
       display: block;
       margin: auto;
@@ -234,7 +258,7 @@ button[disabled] {
    }
 
    h2 {
-      width:150px;
+      width: 150px;
    }
 
    img {
@@ -251,7 +275,7 @@ button[disabled] {
 
 @media (max-width: 600px) {
    body {
-      width:100%;
+      width: 100%;
    }
 
    .logo {
@@ -259,8 +283,9 @@ button[disabled] {
    }
 
    .score {
-      margin:auto;
+      margin: auto;
    }
+
    .ul_item {
       padding: 0;
       display: block;
@@ -288,11 +313,20 @@ button[disabled] {
    .audio {
       width: 110px;
    }
+
+   .congrats-p {
+      font-size: 23px;
+   }
+
+   .prize {
+      width: 140px;
+      height: 110px;
+   }
 }
 
 @media (max-width: 400px) {
    body {
-      width:100%;
+      width: 100%;
    }
 
    .ul_item {
@@ -319,7 +353,7 @@ button[disabled] {
    }
 
    h2 {
-      width:70px;
+      width: 70px;
       font-size: 18px;
    }
 
@@ -329,6 +363,11 @@ button[disabled] {
 
    .audio {
       width: 100px;
+   }
+
+   .prize {
+      width: 90px;
+      height: 70px;
    }
 }
 

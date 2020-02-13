@@ -79,11 +79,14 @@ export default class Main extends Component {
         }));
     };
 
+
     render() {
         const { activeQuestionIndex, isGuessed, chosen, score } = this.state;
-        
+
         return (
-            <div>
+           <>
+             {this.state.activeQuestionIndex < 6  ?
+                <div>
                 <div className="block_one">
                     <header>
                         <img className="logo" src={logo} />
@@ -98,19 +101,21 @@ export default class Main extends Component {
                         ))}
                     </ul>
                 </div>
-                <Question
-                    isGuessed={isGuessed}
-                    activeQuestionIndex={activeQuestionIndex}
-                />
-                <AnswersList
-                    isGuessed={isGuessed}
-                    chosen={chosen}
-                    activeQuestionIndex={activeQuestionIndex}
-                    guess={this.guess}
-                />
-                <button onClick={this.changeQuestion===activeQuestionIndex[5] ? <Congratulation /> : this.changeQuestion} disabled={!isGuessed}>Next Level</button>
+                   <Question
+                      isGuessed={isGuessed}
+                      activeQuestionIndex={activeQuestionIndex}
+                   />
+                   <AnswersList
+                      isGuessed={isGuessed}
+                      chosen={chosen}
+                      activeQuestionIndex={activeQuestionIndex}
+                      guess={this.guess}
+                   />
+                <button onClick={this.changeQuestion} disabled={!isGuessed}>Next Level</button>
             </div>
-
+            : <Congratulation score={score}/>
+            }
+            </>
         )
     }
 }
