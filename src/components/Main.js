@@ -5,6 +5,7 @@ import { birdsData, questions } from './Dates/data';
 import logo from './img/logo.svg';
 import AnswersList from './AnswersList';
 import Score from './Score';
+import Congratulation from './Congratulation';
 
 const headerList = [
     {
@@ -80,7 +81,7 @@ export default class Main extends Component {
 
     render() {
         const { activeQuestionIndex, isGuessed, chosen, score } = this.state;
-
+        
         return (
             <div>
                 <div className="block_one">
@@ -107,8 +108,9 @@ export default class Main extends Component {
                     activeQuestionIndex={activeQuestionIndex}
                     guess={this.guess}
                 />
-                <button onClick={this.changeQuestion} disabled={!isGuessed}>Next Level</button>
+                <button onClick={this.changeQuestion===activeQuestionIndex[5] ? <Congratulation /> : this.changeQuestion} disabled={!isGuessed}>Next Level</button>
             </div>
-        );
+
+        )
     }
 }

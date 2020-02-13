@@ -1,7 +1,6 @@
 import React from 'react';
 
 import ReactAudioPlayer from 'react-audio-player';
-import './Dates/fly.mp3';
 import { birdsData, questions } from './Dates/data';
 import birdImage from './Dates/bird.png';
 
@@ -38,10 +37,11 @@ const AnswersList = (props) => {
                         }
                         let play = {};
 
-                        if (chosen.includes(index)) {
+                        if(chosen.includes(index)) {
                             play = isGuessed && index === correctBirdIndex
-                                ? [ wins.play()]
-                                : [ over.play()];
+                                ?  wins.play()
+                                :  over.play();
+
                         }
 
 
@@ -64,8 +64,8 @@ const AnswersList = (props) => {
                     <div className="block_four_item">
                         <img src={isChosen ? chosenBird.image : birdImage} />
                         <div>
-                            <h2>{isChosen ? chosenBird.name : '*******'}</h2>
-                            <h2>{isChosen ? chosenBird.species : '*******'}</h2>
+                            <h2>{isChosen ? chosenBird.name : ''}</h2>
+                            <h2>{isChosen ? chosenBird.species : ''}</h2>
                             {isChosen && (
                                 <ReactAudioPlayer
                                     className="audio"
