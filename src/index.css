@@ -68,13 +68,16 @@ img {
    padding: 10%;
 }
 
+
+
 .ul_item {
-   background-color: #333;
    color: #fff;
    width: 90%;
-   margin: 5%;
+   margin-left: 5%;
+   margin-right: 0;
    margin-top: 0;
    margin-bottom: 2%;
+   padding: 0;
    display: flex;
    border: 1px solid;
    border-color: #ffe9bb;
@@ -82,9 +85,11 @@ img {
 }
 
 .list_item {
+   background-color: #333;
    color: #ffe9bb;
-   margin: auto;
-   padding: auto;
+   margin: 0;
+   padding-left: 5%;
+   padding-right: 3.2%;
    padding-top: 15px;
    padding-bottom: 15px;
    font-size: 22px;
@@ -93,7 +98,8 @@ img {
 }
 
 .list_item.active{
-   color:red
+   background-color: #fff283;
+   color: black;
 }
 
 .bla {
@@ -177,7 +183,7 @@ button:not([disabled]):active {
 }
 
 button[disabled] {
-   opacity: 0.2;
+   opacity: 0.4;
    cursor: default;
 }
 
