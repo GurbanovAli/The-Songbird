@@ -3,6 +3,7 @@ import React from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import { birdsData, questions } from './Dates/data';
 import birdImage from './Dates/bird.png';
+import volume from './img/amplifier.png';
 
 
 const AnswersList = (props) => {
@@ -18,7 +19,7 @@ const AnswersList = (props) => {
     const chosenBird = isChosen ? question[lastChosenIndex] : null;
 
     const url = 'http://freesoundeffect.net/sites/default/files/bonus-collect-1-sound-effect-82748414.mp3';
-    const wins = new Audio(url);
+    const win = new Audio(url);
     const soundOver = 'http://freesoundeffect.net/sites/default/files/wrong-answer-game-over-6-sound-effect-87570191.mp3';
     const over = new Audio(soundOver);
 
@@ -39,11 +40,9 @@ const AnswersList = (props) => {
 
                         if(chosen.includes(index)) {
                             play = isGuessed && index === correctBirdIndex
-                                ?  wins.play()
+                                ?  win.play()
                                 :  over.play();
-
                         }
-
 
                         return (
                             <li
@@ -62,7 +61,7 @@ const AnswersList = (props) => {
                 </div>
                 <div className="block_four">
                     <div className="block_four_item">
-                        <img src={isChosen ? chosenBird.image : birdImage} />
+                        <img src={isChosen ? chosenBird.image : volume} />
                         <div>
                             <h2>{isChosen ? chosenBird.name : ''}</h2>
                             <h2>{isChosen ? chosenBird.species : ''}</h2>
@@ -75,7 +74,7 @@ const AnswersList = (props) => {
                             )}
                         </div>
                     </div>
-                    <p>{isChosen ? chosenBird.description : 'Послушайте звук сперва'}</p>
+                    <p>{isChosen ? chosenBird.description : 'Пожалуйста послушайте плеер сперва'}</p>
                 </div>
             </div>
         </>

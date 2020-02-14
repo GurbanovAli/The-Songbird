@@ -13,7 +13,7 @@ const Question = (props) => {
     return (
         <div className="block_two">
             <div className="block_item">
-                <img src={isGuessed ? bird.image : birdImage}></img>
+                <img className='question-img' src={isGuessed ? bird.image : birdImage}></img>
             </div>
             <div className="block_item_two">
                 <h1>{isGuessed ? bird.name : '******'}</h1>

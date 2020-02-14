@@ -5,9 +5,9 @@ import Main from './components/Main';
 class App extends Component {
     render() {
         return (
-            <main>
+            <>
                 <Main />
-            </main>
+            </>
         );
     }
 }

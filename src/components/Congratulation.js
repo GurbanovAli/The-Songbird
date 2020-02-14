@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 const url = 'http://memok.net/uploads/2016/12/08/58499c406ac2f.jpg';
+
 class Congratulation extends Component {
    render() {
       return (

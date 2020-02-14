@@ -111,9 +111,9 @@ export default class Main extends Component {
                       activeQuestionIndex={activeQuestionIndex}
                       guess={this.guess}
                    />
-                <button onClick={this.changeQuestion} disabled={!isGuessed}>Next Level</button>
-            </div>
-            : <Congratulation score={score}/>
+                 <button onClick={this.changeQuestion} disabled={!isGuessed}>Next Level</button>
+              </div>
+              : <Congratulation score={score}/>
             }
             </>
         )
