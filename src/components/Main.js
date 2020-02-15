@@ -34,6 +34,7 @@ export default class Main extends Component {
 
         this.state = {
             activeQuestionIndex: 0,
+            lastClickedIndex: -1,
             isGuessed: false,
             score: 0,
             chosen: []
@@ -55,8 +56,12 @@ export default class Main extends Component {
                 newScore += 1;
             }
 
-            chosen.push(id);
+            if (!isGuessed) {
+                chosen.push(id);
+            }
+
             return {
+                lastClickedIndex: id,
                 isGuessed: isGuessed || isCorrect,
                 chosen,
                 score: newScore
@@ -74,6 +79,7 @@ export default class Main extends Component {
 
         this.setState((state) => ({
             activeQuestionIndex: state.activeQuestionIndex + 1,
+            lastClickedIndex: -1,
             isGuessed: false,
             chosen: []
         }));
@@ -81,7 +87,7 @@ export default class Main extends Component {
 
 
     render() {
-        const { activeQuestionIndex, isGuessed, chosen, score } = this.state;
+        const { activeQuestionIndex, isGuessed, chosen, lastClickedIndex, score } = this.state;
 
         return (
            <>
@@ -97,7 +103,8 @@ export default class Main extends Component {
                             <li
                                 key={newList.name}
                                 className={`list_item ${index === activeQuestionIndex ? 'active' : ''}`}
-                                style={newList.style}> {newList.name} </li>
+                                style={newList.style}
+                                > {newList.name} </li>
                         ))}
                     </ul>
                 </div>
@@ -108,6 +115,7 @@ export default class Main extends Component {
                    <AnswersList
                       isGuessed={isGuessed}
                       chosen={chosen}
+                      lastClickedIndex={lastClickedIndex}
                       activeQuestionIndex={activeQuestionIndex}
                       guess={this.guess}
                    />
@@ -116,6 +124,6 @@ export default class Main extends Component {
               : <Congratulation score={score}/>
             }
             </>
-        )
+        );
     }
 }
