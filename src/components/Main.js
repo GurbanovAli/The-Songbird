@@ -41,6 +41,18 @@ export default class Main extends Component {
         };
     }
 
+    playSound = (isCorrect) => {
+        const url = 'http://freesoundeffect.net/sites/default/files/bonus-collect-1-sound-effect-82748414.mp3';
+        const win = new Audio(url);
+        const soundOver = 'http://freesoundeffect.net/sites/default/files/wrong-answer-game-over-6-sound-effect-87570191.mp3';
+        const over = new Audio(soundOver);
+        if (isCorrect) {
+            win.play();
+        } else {
+            over.play();
+        }
+    };
+
     guess = (id) => {
         this.setState(({ activeQuestionIndex, isGuessed, chosen, score }) => {
             const correctAnswerId = questions[activeQuestionIndex];
@@ -56,8 +68,9 @@ export default class Main extends Component {
                 newScore += 1;
             }
 
-            if (!isGuessed) {
+            if (!isGuessed && !chosen.includes(id)) {
                 chosen.push(id);
+                this.playSound(isCorrect);
             }
 
             return {
@@ -103,8 +116,7 @@ export default class Main extends Component {
                             <li
                                 key={newList.name}
                                 className={`list_item ${index === activeQuestionIndex ? 'active' : ''}`}
-                                style={newList.style}
-                                > {newList.name} </li>
+                                style={newList.style}> {newList.name} </li>
                         ))}
                     </ul>
                 </div>
