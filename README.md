@@ -5,4 +5,4 @@ Task link : https://github.com/rolling-scopes-school/tasks/blob/master/tasks/son
 
 Example : https://birds-quiz.netlify.com/#
 
-Public link : https://the-songbird-gurbanovali.netlify.com/
+Public link : https://gurbanovali.github.io/The-Songbird/
