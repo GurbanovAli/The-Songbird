@@ -7,22 +7,14 @@ import volume from './img/amplifier.png';
 
 
 const AnswersList = (props) => {
-    const { isGuessed, chosen, activeQuestionIndex, guess } = props;
-
+    const { isGuessed, chosen, activeQuestionIndex, lastClickedIndex, guess } = props;
 
     const correctBirdIndex = questions[activeQuestionIndex];
 
     const question = birdsData[activeQuestionIndex];
 
     const isChosen = !!chosen.length;
-    const lastChosenIndex = isChosen ? chosen[chosen.length - 1] : -1;
-    const chosenBird = isChosen ? question[lastChosenIndex] : null;
-
-    const url = 'http://freesoundeffect.net/sites/default/files/bonus-collect-1-sound-effect-82748414.mp3';
-    const win = new Audio(url);
-    const soundOver = 'http://freesoundeffect.net/sites/default/files/wrong-answer-game-over-6-sound-effect-87570191.mp3';
-    const over = new Audio(soundOver);
-
+    const chosenBird = lastClickedIndex !== -1 ? question[lastClickedIndex] : null;
 
     return (
         <>
@@ -36,13 +28,6 @@ const AnswersList = (props) => {
                                 ? { color: 'green' }
                                 : { color: 'red' };
                         }
-                        let play = {};
-
-                        if(chosen.includes(index)) {
-                            play = isGuessed && index === correctBirdIndex
-                                ?  win.play()
-                                :  over.play();
-                        }
 
                         return (
                             <li
@@ -50,7 +35,6 @@ const AnswersList = (props) => {
                                 onClick={() => guess(birds.id)}
                                 className="birds_item"
                                 style={styles}
-                                play={play}
                             >
                                <span>
                                   {birds.name}
